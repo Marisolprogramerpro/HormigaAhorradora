@@ -20,12 +20,12 @@
 
     <ImageView
         android:id="@+id/ivLogo"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="345dp"
+        android:layout_height="152dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/logo"
         android:contentDescription="Logo"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,10 +35,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:text="¡Bienvenido!"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tvSubtitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivLogo" />
 
@@ -117,10 +119,12 @@
     <!-- Botón Ingresar -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnIngresar"
-        android:layout_width="0dp"
-        android:layout_height="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/bg_button_login"
         android:text="Ingresar"
         android:textAllCaps="false"
@@ -132,6 +136,7 @@
         app:layout_constraintTop_toBottomOf="@id/etPassword" />
 
     <!-- Footer -->
+
     <TextView
         android:id="@+id/tvRegister"
         android:layout_width="wrap_content"
@@ -142,11 +147,13 @@
         android:textColor="@color/verde_claro"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvForgotPassword"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvForgotPassword"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
@@ -154,6 +161,8 @@
         android:textColor="@color/verde_claro"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnIngresar"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

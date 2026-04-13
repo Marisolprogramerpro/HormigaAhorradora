@@ -13,8 +13,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/verde_principal"
-        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -229,5 +230,14 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cuentanos más sobre ti"
+        android:textColorLink="#F2EEEE"
+        tools:layout_editor_absoluteX="14dp"
+        tools:layout_editor_absoluteY="123dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
