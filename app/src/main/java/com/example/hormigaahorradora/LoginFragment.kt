@@ -8,10 +8,13 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.hormigaahorradora.databinding.FragmentLoginBinding
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.viewModels
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
+    private val viewModel by viewModels<SingInViewModel>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
