@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "178681125498",
+    "project_id": "hormigahorradora",
+    "storage_bucket": "hormigahorradora.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:178681125498:android:0206895893abc23c5439c3",
+        "android_client_info": {
+          "package_name": "com.example.hormigaahorradora"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6bpPeGnpj5CJFf7AV4pnkDIT2npljQJ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
