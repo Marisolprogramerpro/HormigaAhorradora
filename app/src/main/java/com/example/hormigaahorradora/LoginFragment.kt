@@ -23,7 +23,7 @@ class LoginFragment : Fragment() {
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         communicator = activity as FragmentCommunicator
-        communicator.manageLoader(isvisibile = true)
+
         return binding.root
     }
 

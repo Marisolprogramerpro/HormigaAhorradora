@@ -55,8 +55,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.firebaseBom)
-    implementation(libs.firebase.firestone)
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
     implementation(libs.firebase.auth)
 
 }
