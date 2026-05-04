@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/registro"
-        android:name="com.example.hormigaahorradora.Registro"
+        android:name="com.example.hormigaahorradora.RegisterFragment"
         android:label="fragment_registro"
         tools:layout="@layout/fragment_registro" >
         <action
@@ -36,7 +36,7 @@
         tools:layout="@layout/fragment_recuperacion" />
     <fragment
         android:id="@+id/registroDatos"
-        android:name="com.example.hormigaahorradora.RegistroDatos"
+        android:name="com.example.hormigaahorradora.RegisterDataFragment"
         android:label="fragment_registro_datos"
         tools:layout="@layout/fragment_registro_datos" >
         <action

@@ -8,17 +8,22 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import com.example.hormigaahorradora.databinding.FragmentRegistroBinding
+import androidx.fragment.app.viewModels
 
-class Registro : Fragment() {
+class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegistroBinding? = null
     private val binding get() = _binding!!
+    private val viewModel by viewModels<SignInViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         _binding = FragmentRegistroBinding.inflate(inflater, container, false)
+        binding.btnRegistrar.setOnClickListener {
+            viewModel.requestSignUp(binding.etEmail.text.toString().trim(), binding.etPassword.text.toString().trim())
+        }
         return binding.root
     }
 

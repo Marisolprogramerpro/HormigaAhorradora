@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.hormigaahorradora.databinding.FragmentRegistroDatosBinding
 
-class RegistroDatos : Fragment() {
+class RegisterDataFragment : Fragment() {
 
     private var _binding: FragmentRegistroDatosBinding? = null
     private val binding get() = _binding!!
