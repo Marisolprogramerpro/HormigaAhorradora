@@ -19,9 +19,7 @@ class MainActivity : AppCompatActivity(), FragmentCommunicator {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -29,7 +27,7 @@ class MainActivity : AppCompatActivity(), FragmentCommunicator {
     }
 
     override fun manageLoader(isVisibile: Boolean) {
-        binding.view3.isVisible = isVisibile
+        binding.loaderLayout.isVisible = isVisibile
     }
 
 }
