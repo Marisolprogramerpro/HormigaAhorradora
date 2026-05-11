@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fondo"
-    tools:context=".RegisterFragment">
+    tools:context=".signUp.RegisterFragment">
 
     <!-- Sección Superior de Color -->
     <View
@@ -74,16 +74,15 @@
         android:layout_height="48dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/bg_input"
         android:hint="Tu nombre completo"
-        android:inputType="textPersonName"
         android:imeOptions="actionNext"
+        android:inputType="textPersonName"
         android:paddingHorizontal="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvNameLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/topSection" />
 
     <!-- Correo -->
     <TextView
@@ -104,16 +103,16 @@
         android:layout_height="48dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/bg_input"
         android:hint="ejemplo@correo.com"
-        android:inputType="textEmailAddress"
         android:imeOptions="actionNext"
+        android:inputType="textEmailAddress"
         android:paddingHorizontal="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvEmailLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/etName" />
 
     <!-- Contraseña -->
     <TextView
@@ -134,6 +133,36 @@
         android:layout_height="48dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_input"
+        android:hint="********"
+        android:imeOptions="actionNext"
+        android:inputType="textPassword"
+        android:paddingHorizontal="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPasswordLabel" />
+
+    <!-- Confirmar Contraseña -->
+    <TextView
+        android:id="@+id/tvConfirmPasswordLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Confirmar Contraseña:"
+        android:textColor="@color/gris_oscuro"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etPassword" />
+
+    <EditText
+        android:id="@+id/etConfirmPassword"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/bg_input"
@@ -143,26 +172,28 @@
         android:paddingHorizontal="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPasswordLabel" />
+        app:layout_constraintTop_toBottomOf="@id/tvConfirmPasswordLabel" />
 
     <!-- Botón Registrar -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnRegistrar"
         android:layout_width="0dp"
-        android:layout_height="32dp"
+        android:layout_height="48dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/bg_button_login"
         android:text="Registrar"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etPassword" />
+        app:layout_constraintTop_toBottomOf="@id/etConfirmPassword" />
 
     <ImageView
         android:id="@+id/imageView3"

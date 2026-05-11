@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.hormigaahorradora.LoginFragment"
+        android:name="com.example.hormigaahorradora.signIn.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/registro"
-        android:name="com.example.hormigaahorradora.RegisterFragment"
+        android:name="com.example.hormigaahorradora.signUp.RegisterFragment"
         android:label="fragment_registro"
         tools:layout="@layout/fragment_registro" >
         <action
