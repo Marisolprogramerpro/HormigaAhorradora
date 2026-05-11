@@ -60,4 +60,5 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
+    implementation(libs.coroutines.play.services)
 }

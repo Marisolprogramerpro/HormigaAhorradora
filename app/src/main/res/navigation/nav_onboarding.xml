@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.hormigaahorradora.signIn.LoginFragment"
+        android:name="com.example.hormigaahorradora.ui.fragments.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/registro"
-        android:name="com.example.hormigaahorradora.signUp.RegisterFragment"
+        android:name="com.example.hormigaahorradora.ui.fragments.RegisterFragment"
         android:label="fragment_registro"
         tools:layout="@layout/fragment_registro" >
         <action
@@ -31,12 +31,12 @@
     </fragment>
     <fragment
         android:id="@+id/recuperacion"
-        android:name="com.example.hormigaahorradora.Recuperacion"
+        android:name="com.example.hormigaahorradora.ui.fragments.Recuperacion"
         android:label="fragment_recuperacion"
         tools:layout="@layout/fragment_recuperacion" />
     <fragment
         android:id="@+id/registroDatos"
-        android:name="com.example.hormigaahorradora.RegisterDataFragment"
+        android:name="com.example.hormigaahorradora.ui.fragments.RegisterDataFragment"
         android:label="fragment_registro_datos"
         tools:layout="@layout/fragment_registro_datos" >
         <action
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.hormigaahorradora.homeFragment"
+        android:name="com.example.hormigaahorradora.ui.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
 </navigation>

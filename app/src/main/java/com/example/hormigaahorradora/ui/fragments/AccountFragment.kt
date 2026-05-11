@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.example.hormigaahorradora.MainActivity
+import com.example.hormigaahorradora.ui.activities.MainActivity
 import com.example.hormigaahorradora.databinding.FragmentAccountBinding
 import com.example.hormigaahorradora.logic.AuthRepository
 import kotlinx.coroutines.launch
