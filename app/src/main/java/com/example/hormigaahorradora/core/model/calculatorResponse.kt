@@ -5,7 +5,6 @@ data class calculatorResponse {
 
     @SerializedName("results") val results: List<Expense>
 
-
     data class Expense(
         @SerializedName("id") val id: String,
         @SerializedName("description") val description: String,

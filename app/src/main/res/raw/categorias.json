@@ -1,0 +1,52 @@
+{
+  "categorias": [
+    {
+      "id": "CAT001",
+      "nombre": "Alimentación",
+      "icono": "🍔",
+      "color": "#E53935",
+      "descripcion": "Comida, restaurantes y supermercado",
+      "presupuesto_mensual": 3000.00
+    },
+    {
+      "id": "CAT002",
+      "nombre": "Deporte",
+      "icono": "🏋️",
+      "color": "#43A047",
+      "descripcion": "Gimnasio y equipamiento deportivo",
+      "presupuesto_mensual": 800.00
+    },
+    {
+      "id": "CAT003",
+      "nombre": "Ocio",
+      "icono": "🎮",
+      "color": "#8E24AA",
+      "descripcion": "Cine, streaming y entretenimiento",
+      "presupuesto_mensual": 1500.00
+    },
+    {
+      "id": "CAT004",
+      "nombre": "Transporte",
+      "icono": "🚗",
+      "color": "#1E88E5",
+      "descripcion": "Gasolina, Uber y mantenimiento",
+      "presupuesto_mensual": 2000.00
+    },
+    {
+      "id": "CAT005",
+      "nombre": "Salud",
+      "icono": "💊",
+      "color": "#F4511E",
+      "descripcion": "Medicamentos y consultas médicas",
+      "presupuesto_mensual": 1000.00
+    },
+    {
+      "id": "CAT006",
+      "nombre": "Educación",
+      "icono": "📚",
+      "color": "#FFB300",
+      "descripcion": "Cursos, libros y apps educativas",
+      "presupuesto_mensual": 1200.00
+    }
+  ]
+}

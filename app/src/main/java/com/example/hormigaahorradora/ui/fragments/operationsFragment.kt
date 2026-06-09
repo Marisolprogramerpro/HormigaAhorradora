@@ -1,4 +1,4 @@
-package com.example.hormigaahorradora.core.operations
+package com.example.hormigaahorradora.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,13 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.hormigaahorradora.core.FragmentCommunicator
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
-import kotlin.getValue
-import com.example.hormigaahorradora.core.FragmentCommunicator
 
 class operationsFragment {
     private var _binding: FragmentSongsBinding? = null
