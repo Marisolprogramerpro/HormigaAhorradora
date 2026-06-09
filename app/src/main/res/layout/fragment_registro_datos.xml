@@ -1,79 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fondo"
-    tools:context=".RegistroDatos">
+    android:fillViewport="true"
+    android:background="@color/fondo">
 
-    <!-- Sección Superior (Reducida un poco para dar espacio a los campos) -->
-    <View
-        android:id="@+id/topSection"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/verde_principal"
-        app:layout_constraintHeight_percent="0.25"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/ivBack"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/ic_back"
-        android:contentDescription="Atrás"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/ivLogo"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/logo"
-        android:contentDescription="Logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivBack" />
-
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Tus Datos"
-        android:textColor="@color/white"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivLogo" />
+        tools:context=".RegisterDataFragment">
 
-    <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topSection">
+        <View
+            android:id="@+id/topSection"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:background="@color/verde_principal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_back"
+            android:contentDescription="Atrás"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="Tus Datos"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivBack" />
+
+        <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            android:text="Cuéntanos más sobre ti"
+            android:textColor="#CCFFFFFF"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+        <!-- Formulario -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:padding="24dp"
+            app:layout_constraintTop_toBottomOf="@id/topSection">
 
             <!-- Nombre -->
             <TextView
                 android:id="@+id/tvNameLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
                 android:text="Nombre:"
                 android:textColor="@color/gris_oscuro"
                 android:textSize="14sp"
@@ -83,14 +79,12 @@
             <EditText
                 android:id="@+id/etName"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/bg_input"
                 android:hint="Tu nombre"
                 android:inputType="textPersonName"
-                android:paddingHorizontal="12dp"
+                android:paddingHorizontal="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvNameLabel" />
@@ -100,8 +94,7 @@
                 android:id="@+id/tvLastNameLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:text="Apellidos:"
                 android:textColor="@color/gris_oscuro"
                 android:textSize="14sp"
@@ -111,14 +104,12 @@
             <EditText
                 android:id="@+id/etLastName"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/bg_input"
                 android:hint="Tus apellidos"
                 android:inputType="textPersonName"
-                android:paddingHorizontal="12dp"
+                android:paddingHorizontal="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvLastNameLabel" />
@@ -128,8 +119,7 @@
                 android:id="@+id/tvUsernameLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:text="Nombre de usuario:"
                 android:textColor="@color/gris_oscuro"
                 android:textSize="14sp"
@@ -139,14 +129,12 @@
             <EditText
                 android:id="@+id/etUsername"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/bg_input"
-                android:hint="@string/usuario"
+                android:hint="Usuario"
                 android:inputType="text"
-                android:paddingHorizontal="12dp"
+                android:paddingHorizontal="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvUsernameLabel" />
@@ -156,8 +144,7 @@
                 android:id="@+id/tvPhoneLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:text="Teléfono:"
                 android:textColor="@color/gris_oscuro"
                 android:textSize="14sp"
@@ -167,14 +154,12 @@
             <EditText
                 android:id="@+id/etPhone"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/bg_input"
                 android:hint="000 000 0000"
                 android:inputType="phone"
-                android:paddingHorizontal="12dp"
+                android:paddingHorizontal="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvPhoneLabel" />
@@ -184,8 +169,7 @@
                 android:id="@+id/tvBirthDateLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:text="Fecha de nacimiento:"
                 android:textColor="@color/gris_oscuro"
                 android:textSize="14sp"
@@ -195,14 +179,12 @@
             <EditText
                 android:id="@+id/etBirthDate"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/bg_input"
                 android:hint="DD/MM/AAAA"
                 android:inputType="date"
-                android:paddingHorizontal="12dp"
+                android:paddingHorizontal="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvBirthDateLabel" />
@@ -211,16 +193,14 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnFinalizar"
                 android:layout_width="0dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
                 android:background="@drawable/bg_button_login"
                 android:text="Finalizar Registro"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -228,6 +208,6 @@
                 app:layout_constraintTop_toBottomOf="@id/etBirthDate" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

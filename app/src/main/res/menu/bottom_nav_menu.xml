@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@android:drawable/ic_menu_today"
+        android:title="Inicio" />
+    <item
+        android:id="@+id/resumenFragment"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="Resumen" />
+    <item
+        android:id="@+id/accountFragment"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:title="Cuenta" />
+</menu>
