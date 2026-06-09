@@ -64,6 +64,10 @@ class LoginFragment : Fragment() {
             findNavController()
                 .navigate(R.id.action_loginFragment_to_registro)
         }
+        binding.tvForgotPassword.setOnClickListener {
+            findNavController()
+                .navigate(R.id.action_loginFragment_to_recuperacion)
+        }
     }
 
     private fun observeState() {

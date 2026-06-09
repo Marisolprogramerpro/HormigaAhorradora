@@ -16,7 +16,7 @@ class AuthRepository {
             
             val newUser = User(uid = firebaseUser.uid, nombre = nombre, email = email)
             
-            // Guardar en Firestore
+            // Guardar en Firestore usando la colección "users"
             firestore.collection("users").document(newUser.uid).set(newUser).await()
             
             Result.success(newUser)
@@ -49,5 +49,14 @@ class AuthRepository {
     
     fun logout() {
         auth.signOut()
+    }
+
+    suspend fun requestPasswordReset(email: String): Result<Unit> {
+        return try {
+            auth.sendPasswordResetEmail(email).await()
+            Result.success(Unit)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
     }
 }

@@ -67,10 +67,21 @@ class RegisterDataFragment : Fragment() {
             )
 
             viewLifecycleOwner.lifecycleScope.launch {
-                // Usaremos un método en el repositorio para actualizar/guardar estos datos adicionales
                 try {
                     val firestore = com.google.firebase.firestore.FirebaseFirestore.getInstance()
-                    firestore.collection("users").document(user.uid).set(user).await()
+                    
+                    // En lugar de sobrescribir todo, actualizamos solo los campos nuevos
+                    // para no perder el email que se guardó en el paso anterior
+                    val updates = hashMapOf(
+                        "nombre" to name,
+                        "apellidos" to lastName,
+                        "nombreUsuario" to username,
+                        "telefono" to phone,
+                        "fechaNacimiento" to birthDate
+                    )
+                    
+                    firestore.collection("users").document(currentUser.uid)
+                        .update(updates as Map<String, Any>).await()
                     
                     val intent = Intent(requireContext(), HomeActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

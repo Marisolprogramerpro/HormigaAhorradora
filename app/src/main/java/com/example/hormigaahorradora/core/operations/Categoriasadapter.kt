@@ -15,7 +15,6 @@ class CategoriasAdapter(
     private val onItemClick: (Categoria) -> Unit
 ) : ListAdapter<Categoria, CategoriasAdapter.CategoriaViewHolder>(DIFF) {
 
-    // Totales calculados — se actualiza desde el Fragment
     private var totales: Map<String, Double> = emptyMap()
 
     fun submitTotales(nuevos: Map<String, Double>) {
@@ -51,14 +50,9 @@ class CategoriasAdapter(
             binding.tvPresupuesto.text = "de $%.2f".format(presupuesto)
             binding.progressBar.progress = porcentaje
 
-            // Color del acento izquierdo
-            try {
-                binding.viewColorAccent.setBackgroundColor(categoria.color.toColorInt())
-            } catch (_: Exception) {
-                binding.viewColorAccent.setBackgroundColor(Color.GRAY)
-            }
 
-            // Color de la barra según porcentaje
+
+
             val colorBarra = when {
                 porcentaje >= 100 -> "#E53935".toColorInt()
                 porcentaje >= 80  -> "#FF9800".toColorInt()
@@ -66,7 +60,7 @@ class CategoriasAdapter(
             }
             binding.progressBar.progressTintList = ColorStateList.valueOf(colorBarra)
 
-            // Estado del presupuesto
+
             val estado = when {
                 porcentaje >= 100 -> "¡Límite alcanzado!"
                 porcentaje >= 80  -> "Casi al límite"

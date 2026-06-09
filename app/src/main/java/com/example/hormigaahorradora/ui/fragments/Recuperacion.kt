@@ -7,18 +7,30 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.example.hormigaahorradora.core.FragmentCommunicator
+import com.example.hormigaahorradora.core.ResponseService
 import com.example.hormigaahorradora.databinding.FragmentRecuperacionBinding
+import com.example.hormigaahorradora.ui.viewmodels.RecuperacionViewModel
+import kotlinx.coroutines.launch
 
 class Recuperacion : Fragment() {
 
     private var _binding: FragmentRecuperacionBinding? = null
     private val binding get() = _binding!!
+    private val viewModel by viewModels<RecuperacionViewModel>()
+    private lateinit var communicator: FragmentCommunicator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRecuperacionBinding.inflate(inflater, container, false)
+        communicator = requireActivity() as FragmentCommunicator
         return binding.root
     }
 
@@ -26,13 +38,41 @@ class Recuperacion : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupValidation()
+        observeState()
 
         binding.ivBack.setOnClickListener {
             findNavController().navigateUp()
         }
 
         binding.btnRecuperar.setOnClickListener {
-            // Acción para enviar el código (puedes navegar a otra pantalla si existe)
+            val email = binding.etEmail.text.toString().trim()
+            viewModel.resetPassword(email)
+        }
+    }
+
+    private fun observeState() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.recuperacionState.collect { state ->
+                    when (state) {
+                        is ResponseService.Loading -> {
+                            communicator.manageLoader(true)
+                            binding.btnRecuperar.isEnabled = false
+                        }
+                        is ResponseService.Success -> {
+                            communicator.manageLoader(false)
+                            Toast.makeText(requireContext(), "Se ha enviado un correo para restablecer tu contraseña", Toast.LENGTH_LONG).show()
+                            findNavController().navigateUp()
+                        }
+                        is ResponseService.Error -> {
+                            communicator.manageLoader(false)
+                            binding.btnRecuperar.isEnabled = true
+                            Toast.makeText(requireContext(), state.error, Toast.LENGTH_LONG).show()
+                        }
+                        null -> Unit
+                    }
+                }
+            }
         }
     }
 

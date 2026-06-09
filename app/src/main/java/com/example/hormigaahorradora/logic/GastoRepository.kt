@@ -13,9 +13,9 @@ class GastoRepository {
     private val firestore = FirebaseFirestore.getInstance()
     private val auth = FirebaseAuth.getInstance()
 
-    // Colección: usuarios/{uid}/gastos/{gastoId}
+    // Colección: users/{uid}/gastos/{gastoId}
     private fun gastosCollection() =
-        firestore.collection("usuarios")
+        firestore.collection("users")
             .document(auth.currentUser?.uid ?: "")
             .collection("gastos")
 
