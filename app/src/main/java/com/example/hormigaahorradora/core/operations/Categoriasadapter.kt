@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hormigaahorradora.databinding.ItemCategoriaBinding
-import com.example.hormigaahorradora.core.model.CategoriasResponse.Categoria
+import com.example.hormigaahorradora.core.model.Categoria
 
 class CategoriasAdapter(
     private val onItemClick: (Categoria) -> Unit
 ) : ListAdapter<Categoria, CategoriasAdapter.CategoriaViewHolder>(DIFF) {
 
-    // Totales calculados desde Firestore — se actualiza desde el Fragment
+    // Totales calculados — se actualiza desde el Fragment
     private var totales: Map<String, Double> = emptyMap()
 
     fun submitTotales(nuevos: Map<String, Double>) {

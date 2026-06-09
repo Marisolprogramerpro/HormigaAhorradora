@@ -20,91 +20,87 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import com.example.hormigaahorradora.core.model.CategoriasResponse.Categoria
+import com.example.hormigaahorradora.core.model.Categoria
 import com.example.hormigaahorradora.data.model.Gasto
+import com.example.hormigaahorradora.ui.viewmodels.GastoViewModel
 
 class HomeFragment : Fragment() {
 
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
+    // Usamos la Activity como owner para que el ViewModel se comparta con CategoriaDetailFragment
+    private val viewModel by viewModels<GastoViewModel>(
+        ownerProducer = { requireActivity() }
+    )
 
-    class HomeFragment : Fragment() {
+    private val adapter = CategoriasAdapter { categoria ->
+        val bundle = Bundle().apply { putParcelable("categoria", categoria) }
+        findNavController().navigate(R.id.action_homeFragment_to_categoriaDetailFragment, bundle)
+    }
 
-        private var _binding: FragmentHomeBinding? = null
-        private val binding get() = _binding!!
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        // Usamos la Activity como owner para que el ViewModel se comparta con CategoriaDetailFragment
-        private val viewModel by viewModels <GastoViewModel>(
-            ownerProducer = { requireActivity() }
-        )
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView()
+        observeState()
+        viewModel.loadCategorias()
 
-        private val adapter = CategoriasAdapter { categoria ->
-            val bundle = Bundle().apply { putParcelable("categoria", categoria) }
-            findNavController().navigate(R.id.action_homeFragment_to_categoriaDetailFragment, bundle)
-        }
+        val mes = SimpleDateFormat("MMMM yyyy", Locale("es", "MX"))
+            .format(Date()).replaceFirstChar { it.uppercase() }
+        binding.tvMesActual.text = "Informe: $mes"
+    }
 
-        override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View {
-            _binding = FragmentHomeBinding.inflate(inflater, container, false)
-            return binding.root
-        }
+    private fun setupRecyclerView() {
+        binding.rvCategorias.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvCategorias.adapter = adapter
+    }
 
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            super.onViewCreated(view, savedInstanceState)
-            setupRecyclerView()
-            observeState()
-            viewModel.loadCategorias()
+    private fun observeState() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
 
-            val mes = SimpleDateFormat("MMMM yyyy", Locale("es", "MX"))
-                .format(Date()).replaceFirstChar { it.uppercase() }
-            binding.tvMesActual.text = "Informe: $mes"
-        }
-
-        private fun setupRecyclerView() {
-            binding.rvCategorias.layoutManager = LinearLayoutManager(requireContext())
-            binding.rvCategorias.adapter = adapter
-        }
-
-        private fun observeState() {
-            viewLifecycleOwner.lifecycleScope.launch {
-                repeatOnLifecycle(Lifecycle.State.STARTED) {
-
-                    // Categorías del JSON
-                    launch {
-                        viewModel.categoriasState.collect { state ->
-                            when (state) {
-                                is ResponseService.Loading ->
-                                    binding.progressBar.visibility = View.VISIBLE
-                                is ResponseService.Success -> {
-                                    binding.progressBar.visibility = View.GONE
-                                    adapter.submitList(state.data)
-                                }
-                                is ResponseService.Error -> {
-                                    binding.progressBar.visibility = View.GONE
-                                    Snackbar.make(binding.root, state.error, Snackbar.LENGTH_LONG).show()
-                                }
-                                null -> {}
+                // Categorías del JSON
+                launch {
+                    viewModel.categoriasState.collect { state ->
+                        when (state) {
+                            is ResponseService.Loading ->
+                                binding.progressBar.visibility = View.VISIBLE
+                            is ResponseService.Success -> {
+                                binding.progressBar.visibility = View.GONE
+                                adapter.submitList(state.data)
                             }
+                            is ResponseService.Error -> {
+                                binding.progressBar.visibility = View.GONE
+                                Snackbar.make(binding.root, state.error, Snackbar.LENGTH_LONG).show()
+                            }
+                            null -> {}
                         }
                     }
+                }
 
-                    // Totales por categoría desde Firestore
-                    launch {
-                        viewModel.totalesPorCategoria.collect { totales ->
-                            adapter.submitTotales(totales)
-                            // Actualizar resumen del header
-                            val totalGastado = totales.values.sum()
-                            binding.tvTotalGastado.text = "$%.2f".format(totalGastado)
-                        }
+                // Totales por categoría desde Firestore
+                launch {
+                    viewModel.totalesPorCategoria.collect { totales ->
+                        adapter.submitTotales(totales)
+                        // Actualizar resumen del header
+                        val totalGastado = totales.values.sum()
+                        binding.tvTotalGastado.text = "$%.2f".format(totalGastado)
                     }
                 }
             }
         }
+    }
 
-        override fun onDestroyView() {
-            super.onDestroyView()
-            _binding = null
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

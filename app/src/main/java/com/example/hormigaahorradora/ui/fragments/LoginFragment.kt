@@ -13,11 +13,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.hormigaahorradora.R
-import com.example.hormigaahorradora.signIn.SignInViewModel
 import com.example.hormigaahorradora.core.FragmentCommunicator
 import com.example.hormigaahorradora.core.ResponseService
 import com.example.hormigaahorradora.databinding.FragmentLoginBinding
 import com.example.hormigaahorradora.ui.activities.HomeActivity
+import com.example.hormigaahorradora.ui.viewmodels.SignInViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
@@ -27,15 +27,10 @@ class LoginFragment : Fragment() {
     private val viewModel by viewModels<SignInViewModel>()
     private lateinit var communicator: FragmentCommunicator
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         communicator = requireActivity() as FragmentCommunicator
         setupValidation()
@@ -102,5 +97,10 @@ class LoginFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -5,9 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.hormigaahorradora.databinding.FragmentResumenBinding
 import androidx.fragment.app.viewModels
-
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.example.hormigaahorradora.core.ResponseService
+import com.example.hormigaahorradora.databinding.FragmentResumenBinding
+import com.example.hormigaahorradora.ui.viewmodels.GastoViewModel
+import kotlinx.coroutines.launch
 
 class ResumenFragment : Fragment() {
     private var _binding: FragmentResumenBinding? = null

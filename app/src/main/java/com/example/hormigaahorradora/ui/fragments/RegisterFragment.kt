@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -12,10 +13,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.hormigaahorradora.R
-import com.example.hormigaahorradora.signUp.RegisterViewModel
 import com.example.hormigaahorradora.core.FragmentCommunicator
 import com.example.hormigaahorradora.core.ResponseService
 import com.example.hormigaahorradora.databinding.FragmentRegistroBinding
+import com.example.hormigaahorradora.ui.viewmodels.RegisterViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
@@ -23,7 +24,7 @@ class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegistroBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModels <RegisterViewModel>()
+    private val viewModel by viewModels<RegisterViewModel>()
     private lateinit var communicator: FragmentCommunicator
 
     override fun onCreateView(
@@ -31,7 +32,7 @@ class RegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRegistroBinding.inflate(inflater, container, false)
-        communicator =requireActivity() as FragmentCommunicator
+        communicator = requireActivity() as FragmentCommunicator
         setupValidation()
         setupClickListeners()
         observeState()
@@ -85,7 +86,7 @@ class RegisterFragment : Fragment() {
                         }
                         is ResponseService.Success -> {
                             communicator.manageLoader(false)
-                            android.widget.Toast.makeText(requireContext(), "Registro exitoso", android.widget.Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "Registro exitoso", Toast.LENGTH_SHORT).show()
                             findNavController().navigate(R.id.action_registro_to_registroDatos)
                         }
                         is ResponseService.Error -> {
@@ -101,4 +102,8 @@ class RegisterFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
